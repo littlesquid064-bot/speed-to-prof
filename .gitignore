@@ -10,9 +10,6 @@ server/.env
 .env.local
 .env.*.local
 
-# Build outputs
-client/dist/
-
 # System files
 .DS_Store
 Thumbs.db
