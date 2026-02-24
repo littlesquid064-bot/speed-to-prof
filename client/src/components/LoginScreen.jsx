@@ -8,7 +8,7 @@ const LoginScreen = ({ onLogin }) => {
 
     const handleLogin = () => {
         setLoading(true);
-        fetch('/api/login', {
+        fetch('https://speed-to-prof-2.onrender.com/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email })
