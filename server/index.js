@@ -16,7 +16,7 @@ app.use('/pages', pagesRouter);
 // API Endpoints
 
 // Login
-app.post('/api/login', (req, res) => {
+app.post('https://speed-to-prof.vercel.app/api/login', (req, res) => {
     const { email } = req.body;
     const userScenario = SCENARIOS[email];
 
@@ -33,7 +33,7 @@ app.post('/api/login', (req, res) => {
 });
 
 // Get Self Rating Questions - return without answers (though in this case self rating has no answers)
-app.get('/api/questions/self-rating/:email', (req, res) => {
+app.get('https://speed-to-prof.vercel.app/api/questions/self-rating/:email', (req, res) => {
     const { email } = req.params;
     const userScenario = SCENARIOS[email];
     if (!userScenario) return res.status(404).json({ error: 'User not found' });
@@ -59,7 +59,7 @@ app.get('/api/questions/self-rating/:email', (req, res) => {
 // we can expose an endpoint to validate a specific answer.
 // OR just send the answer index for now to replicate behavior exactly and quickly.
 // Let's send it for now to match exactly the client-side logic ease of porting.
-app.get('/api/questions/test/:email', (req, res) => {
+app.get('https://speed-to-prof.vercel.app/api/questions/test/:email', (req, res) => {
     const { email } = req.params;
     const userScenario = SCENARIOS[email];
     if (!userScenario) return res.status(404).json({ error: 'User not found' });
@@ -68,7 +68,7 @@ app.get('/api/questions/test/:email', (req, res) => {
 });
 
 // Get Subjective Questions
-app.get('/api/questions/subjective/:email', (req, res) => {
+app.get('https://speed-to-prof.vercel.app/api/questions/subjective/:email', (req, res) => {
     const { email } = req.params;
     const userScenario = SCENARIOS[email];
     if (!userScenario) return res.status(404).json({ error: 'User not found' });
@@ -77,7 +77,7 @@ app.get('/api/questions/subjective/:email', (req, res) => {
 });
 
 // Submit Assessment & Calculate Results (4-source model)
-app.post('/api/submit-assessment', (req, res) => {
+app.post('https://speed-to-prof.vercel.app/api/submit-assessment', (req, res) => {
     const { email, selfRatings, testScores, subjectiveScores } = req.body;
     const userScenario = SCENARIOS[email];
 
@@ -117,7 +117,7 @@ app.post('/api/submit-assessment', (req, res) => {
 });
 
 // Get Assessment Sources data
-app.get('/api/assessment-sources/:email', (req, res) => {
+app.get('https://speed-to-prof.vercel.app/api/assessment-sources/:email', (req, res) => {
     const { email } = req.params;
     const userScenario = SCENARIOS[email];
     if (!userScenario) return res.status(404).json({ error: 'User not found' });
@@ -169,7 +169,7 @@ app.get('/api/assessment-sources/:email', (req, res) => {
 });
 
 // Get Dashboard Data
-app.get('/api/dashboard/:email', (req, res) => {
+app.get('https://speed-to-prof.vercel.app/api/dashboard/:email', (req, res) => {
     const { email } = req.params;
     const userScenario = SCENARIOS[email];
     if (!userScenario) return res.status(404).json({ error: 'User not found' });
@@ -188,7 +188,7 @@ app.get('/api/dashboard/:email', (req, res) => {
 });
 
 // Subjective Assessment Evaluation (AI)
-app.post('/api/evaluate-subjective', async (req, res) => {
+app.post('https://speed-to-prof.vercel.app/api/evaluate-subjective', async (req, res) => {
     const { email, questionId, answer } = req.body;
     const userScenario = SCENARIOS[email];
 
