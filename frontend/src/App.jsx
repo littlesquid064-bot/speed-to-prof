@@ -105,16 +105,16 @@ const App = () => {
 
         setCurrentUserEmail(data.email);
         setProfile(data.profile);
-        fetch(`https://speed-to-prof.vercel.app/api/questions/self-rating/${data.email}`)
+        fetch(`/api/questions/self-rating/${data.email}`)
             .then(res => res.json())
             .then(q => setScenarioData(p => ({ ...p, self_q: q })));
-        fetch(`https://speed-to-prof.vercel.app/api/questions/test/${data.email}`)
+        fetch(`/api/questions/test/${data.email}`)
             .then(res => res.json())
             .then(q => setScenarioData(p => ({ ...p, test_q: q })));
-        fetch(`https://speed-to-prof.vercel.app/api/questions/subjective/${data.email}`)
+        fetch(`/api/questions/subjective/${data.email}`)
             .then(res => res.json())
             .then(q => setScenarioData(p => ({ ...p, subjective_q: q })));
-        fetch(`https://speed-to-prof.vercel.app/api/assessment-sources/${data.email}`)
+        fetch(`/api/assessment-sources/${data.email}`)
             .then(res => res.json())
             .then(d => setDataSources(d.sources || []));
         navigate('/genie-intro');
@@ -168,7 +168,7 @@ const App = () => {
     };
 
     const submitAssessment = (navigate) => {
-        fetch('https://speed-to-prof.vercel.app/api/submit-assessment', {
+        fetch('/api/submit-assessment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -182,7 +182,7 @@ const App = () => {
             .then(data => {
                 setResults(data.results);
                 setSourceBreakdown(data.sourceBreakdown || {});
-                fetch(`https://speed-to-prof.vercel.app/api/dashboard/${currentUserEmail}`)
+                fetch(`/api/dashboard/${currentUserEmail}`)
                     .then(res => res.json())
                     .then(d => {
                         setScenarioData(p => ({

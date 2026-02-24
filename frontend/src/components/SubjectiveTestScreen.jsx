@@ -12,7 +12,7 @@ const SubjectiveTestScreen = ({ user, onComplete }) => {
     const [feedback, setFeedback] = useState(null);
 
     useEffect(() => {
-        fetch(`https://speed-to-prof.vercel.app/api/questions/subjective/${user.email}`)
+        fetch(`/api/questions/subjective/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setQuestions(data);
@@ -28,7 +28,7 @@ const SubjectiveTestScreen = ({ user, onComplete }) => {
         if (!answer.trim()) return;
         setEvaluating(true);
         try {
-            const res = await fetch('https://speed-to-prof.vercel.app/api/evaluate-subjective', {
+            const res = await fetch('/api/evaluate-subjective', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

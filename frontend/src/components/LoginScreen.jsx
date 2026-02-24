@@ -8,7 +8,7 @@ const LoginScreen = ({ onLogin }) => {
 
     const handleLogin = () => {
         setLoading(true);
-        fetch('https://speed-to-prof.vercel.app/api/login', {
+        fetch('/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email })
