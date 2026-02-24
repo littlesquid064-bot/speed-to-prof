@@ -248,6 +248,11 @@ app.post('https://speed-to-prof.vercel.app/api/evaluate-subjective', async (req,
     }
 });
 
+// Health Check
+app.get('/health', (req, res) => {
+    res.json({ status: 'ok', timestamp: new Date().toISOString(), message: 'Server is healthy' });
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
